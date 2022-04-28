@@ -12,6 +12,13 @@ SELECT CLASS, COUNT(ANIMALID)
 FROM ANIMAL
 GROUP BY CLASS;
 
+--# Encontrar la cantidad de CLASES DE ANIMALES que su tipo de comida son hormigas
+SELECT ANIMAL.Class, FEEDING.FoodType, COUNT(Class)
+FROM alfred.ANIMAL, alfred.FEEDING
+WHERE FEEDING.FoodType = 'Ants'
+group by Class ;
+
+
 --# ORDER THE NUMBER OF EMPLOYEES OR CUSTOMERS BY EACH STATE.
 
 SELECT US_STATE, COUNT(FULLNAME)
@@ -19,11 +26,22 @@ FROM PERSON
 GROUP BY US_STATE
 ORDER BY COUNT(FULLNAME) DESC;
 
+SELECT US_STATE, COUNT(FULLNAME) as 'CANT_PAIS'
+FROM alfred.PERSON
+GROUP BY US_STATE
+ORDER BY 'CANT_PAIS' DESC;
+
 --# GET THE NAMES OF ALL THE EMPLOYEES HIRED BEFORE THE YEAR 2000.
 
 SELECT EMPLOYEEFULLNAME
 FROM EMPLOYEE
 WHERE HIREDATE < '2000/01/01';
+
+--#Encuentre los nombres de los zookeeper ... quiero hacer algo mas
+
+SELECT EmployeeFullName FROM alfred.EMPLOYEE, alfred.ZOOKEEPER  
+where EmployeeType = 'Zookeeper'
+ORDER BY KeeperID
 
 --# Find the food associated to the proper name (NOT the classification) of the animal
 
